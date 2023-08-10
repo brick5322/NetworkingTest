@@ -1,14 +1,21 @@
 #include "Networking/DHCP/Message.h"
-#include <stdio.h>
+#include <fstream>
+#include <iostream>
 
 using namespace bric::Networking;
+using namespace std;
 
 int main()
 {
-    FILE *fp = fopen("resources/discover.bin","rb");
-    uint8_t buffer[350];
-    size_t size = fread(buffer,300,1,fp);
-
-    DHCP::Message message(buffer,300);
+    char buffer[300];
+    
+    DHCP::Message msg;
+    ifstream discover("resources/discover.bin",ios::binary|ios::in);
+    discover.read(buffer,300);
+    discover.close();
+    ostream mst(&msg);
+    mst.write(buffer,300);
+    cout << msg.size();
+    msg.analysis();
     return 0;
 }
