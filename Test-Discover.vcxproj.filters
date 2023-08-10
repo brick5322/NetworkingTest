@@ -14,7 +14,10 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\Networking\DHCP\private\Message.cpp">
+    <ClCompile Include="Networking\DHCP\Message.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Networking\DHCP\Session.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

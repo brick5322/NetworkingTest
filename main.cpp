@@ -7,15 +7,12 @@ using namespace std;
 
 int main()
 {
-    char buffer[300];
     
     DHCP::Message msg;
+    msg.resize(300);
     ifstream discover("resources/discover.bin",ios::binary|ios::in);
-    discover.read(buffer,300);
+    discover.read((char*)msg.data(), 300);
     discover.close();
-    ostream mst(&msg);
-    mst.write(buffer,300);
-    cout << msg.size();
     msg.analysis();
     return 0;
 }
